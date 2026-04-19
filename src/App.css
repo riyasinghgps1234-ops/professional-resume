@@ -1,38 +1,244 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700;800&display=swap');
+
+:root {
+  --navy: #2d343e;
+  --sidebar-gray: #f2f4f7;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* 1. Reset Body - Centers everything on your Mac screen */
+body { 
+  margin: 0; 
+  padding: 0; 
+  background-color: #2f3542; 
+  font-family: 'Inter', sans-serif; 
+  overflow-x: hidden;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+.app-container {
+  display: flex;
+  justify-content: center;
+  padding: 40px 16px;
   min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 2. THE RESUME PAPER - SHRINK TO FIT */
+.resume-container {
+  width: min(210mm, 100%);
+  height: auto !important; 
+  background: white;
   display: flex;
   flex-direction: column;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.6);
+  overflow: hidden;
+}
+
+/* 3. HEADER */
+.dark-header {
+  background-color: var(--navy) !important;
+  padding: 40px 60px;
+  display: flex;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  gap: 40px;
 }
 
-.App-link {
-  color: #61dafb;
+.photo-wrapper {
+  width: 140px;
+  height: 140px;
+  border-radius: 50%;
+  border: 4px solid white;
+  overflow: hidden;
+  flex-shrink: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.round-photo { width: 100%; height: 100%; object-fit: cover; }
+
+.header-info { flex: 1; background: transparent !important; }
+.name-display { color: white !important; font-size: 38px; margin: 0; font-weight: 800; text-transform: uppercase; }
+.role-display { color: #adb5bd !important; font-size: 18px; margin-top: 5px; }
+
+/* 4. THE BODY */
+.resume-body { 
+  display: flex; 
+  align-items: stretch; 
+}
+
+.sidebar { 
+  background-color: var(--sidebar-gray); 
+  width: 260px; 
+  padding: 20px 30px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+}
+
+.main-content { 
+  flex: 1; 
+  padding: 20px 40px; 
+  box-sizing: border-box;
+}
+
+/* 5. TIGHTENING EVERY SINGLE GAP */
+.side-header, .main-header { 
+  font-size: 15px; 
+  border-bottom: 2px solid #d1d5db; 
+  padding-bottom: 6px; 
+  margin: 0 0 12px 0 !important; 
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.main-header { color: #111; }
+
+.main-section {
+  margin-bottom: 26px;
+}
+
+.exp-item, .edu-item { 
+  margin-bottom: 18px !important; 
+  padding: 0 !important;
+}
+
+.exp-row { 
+  display: flex; 
+  justify-content: space-between; 
+  align-items: baseline;
+  gap: 16px;
+  font-weight: 600; 
+  font-size: 14px; 
+  margin-bottom: 3px;
+}
+
+.exp-comp,
+.edu-degree {
+  color: #111;
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.exp-date {
+  color: #111;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.exp-role { 
+  color: #6b7280; 
+  font-style: italic; 
+  margin: 0 !important; 
+  font-size: 13px; 
+}
+
+.summary-text, .exp-desc { 
+  font-size: 13.5px; 
+  line-height: 1.45; 
+  margin: 6px 0 0 0 !important; 
+  color: #111;
+}
+
+.profile-text {
+  max-width: 95%;
+}
+
+.project-item:last-child,
+.edu-item:last-child,
+.exp-item:last-child {
+  margin-bottom: 0 !important;
+}
+
+.project-tech {
+  color: #111;
+}
+
+.project-desc {
+  margin-top: 6px !important;
+}
+
+/* 6. EDIT BUTTON */
+.edit-btn {
+  position: fixed; bottom: 30px; right: 30px;
+  padding: 10px 20px; background: var(--navy); color: white;
+  border: none; border-radius: 50px; cursor: pointer;
+  z-index: 1000;
+}
+
+@media (max-width: 1100px) {
+  .dark-header {
+    padding: 32px 36px;
+    gap: 28px;
   }
-  to {
-    transform: rotate(360deg);
+
+  .main-content {
+    padding: 20px 28px;
+  }
+}
+
+@media (max-width: 900px) {
+  .resume-body {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+  }
+
+  .main-content {
+    padding: 24px 24px 32px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-container {
+    padding: 16px;
+  }
+
+  .dark-header {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+    gap: 18px;
+  }
+
+  .photo-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .name-display {
+    font-size: 28px;
+  }
+
+  .role-display {
+    font-size: 15px;
+  }
+
+  .sidebar,
+  .main-content {
+    padding: 20px;
+  }
+
+  .main-section {
+    margin-bottom: 22px;
+  }
+
+  .exp-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .exp-date {
+    white-space: normal;
+  }
+
+  .profile-text {
+    max-width: 100%;
+  }
+
+  .edit-btn {
+    right: 16px;
+    bottom: 16px;
+    padding: 10px 16px;
   }
 }
