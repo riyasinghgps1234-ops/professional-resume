@@ -31,7 +31,7 @@ function App() {
                 <section className="side-block">
                   <h2 className="side-header">CONTACT</h2>
                   <div className="contact-item">📞 {data.personalInfo.phone}</div>
-                  <div className="contact-item">✉️{data.personalInfo.email}</div>
+                  <div className="contact-item">✉️ {data.personalInfo.email}</div>
                   <div className="contact-item">📍 {data.personalInfo.location}</div>
                 </section>
 
@@ -57,7 +57,7 @@ function App() {
               <main className="main-content">
                 <section className="main-section">
                   <h2 className="main-header">PROFILE</h2>
-                  <p className="summary-text profile-text">{data.personalInfo.summary}</p>
+                  <p className="summary-text">{data.personalInfo.summary}</p>
                 </section>
 
                 <section className="main-section">
@@ -90,12 +90,12 @@ function App() {
                 <section className="main-section">
                   <h2 className="main-header">PROJECTS</h2>
                   {data.projects && data.projects.map((proj, i) => (
-                    <div key={i} className="exp-item project-item">
+                    <div key={i} className="exp-item">
                       <div className="exp-row">
                         <span className="edu-degree">{proj.title}</span>
-                        <span className="exp-date project-tech">{proj.tech}</span>
+                        <span className="exp-date" style={{color: '#3498db'}}>{proj.tech}</span>
                       </div>
-                      <p className="exp-desc project-desc">{proj.description}</p>
+                      <p className="exp-desc" style={{marginTop: '5px'}}>{proj.description}</p>
                     </div>
                   ))}
                 </section>
